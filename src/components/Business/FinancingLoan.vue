@@ -1,43 +1,22 @@
 <template>
   <div id="app">
-
     <div class="container">
-      <h3>银行信贷</h3>
-      <el-row :gutter="10">
-        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-          <img src="../../../static/img/housing_loan.png" class="background-img" @click="apply(0)">
-          <h2 class="card-name">房屋贷款</h2>
-          <div class="imgbox">
-            <el-row>
-              <el-col :span="6" :gutter="20" v-for="item in list.House" :key="item">
-                <img :src="item.Logo">
-              </el-col>
-            </el-row>
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-          <img src="../../../static/img/car_loans.png" class="background-img" @click="apply(1)">
-          <h2 class="card-name">车辆贷款</h2>
-          <div class="imgbox">
-            <el-row>
-              <el-col :span="6" :gutter="20" v-for="item in list.Car" :key="item">
-                <img :src="item.Logo">
-              </el-col>
-            </el-row>
-          </div>
-        </el-col>
-        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-          <img src="../../../static/img/credit.png" class="background-img" @click="apply(2)">
-          <h2 class="card-name">信用贷款</h2>
-          <div class="imgbox">
-            <el-row>
-              <el-col :span="6" :gutter="20" v-for="item in list.Credit" :key="item">
-                <img :src="item.Logo">
-              </el-col>
-            </el-row>
-          </div>
-        </el-col>
-      </el-row>
+      <div class="main">
+        <h3>
+          <span class="product-title">业务产品</span>
+        </h3>
+        <div class="btnbox">
+          <el-button type="info" size="medium" @click="$router.push('MortgageLoan');">按揭贷款</el-button>
+          <el-button type="primary" size="medium">融资金贷款</el-button>
+          <el-button type="info" size="medium" @click="$router.push('FinanceLease');">融资租赁</el-button>
+        </div>
+        <div class="textbox">
+          <p class="text-head">新车二手车按揭贷款</p>
+          <p class="text-body">购买人在购买新车、二手车时，通过其在银行申办的用于汽车按揭分期付款的专项贷款，以所购的车辆作为抵
+押性物，向银行申请贷款。贷款发放后，购车人按月分期还款的方式偿还透支资金并支付分期手续费。</p>
+          <img src="../../../static/img/tp.png" class="tpimg"/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,69 +25,18 @@
   export default {
     data() {
       return {
-        list:[]
       }
+    },
+    mounted: function () {
+      document.getElementsByTagName("body")[0].className = "add_bg";
+    },
+    beforeDestroy: function () {
+      document.body.removeAttribute("class", "add_bg");
     },
     computed: {
 
     },
-    mounted: function () {
-      this.getInfo()
-    },
     methods: {
-      getInfo() {
-        const loading = this.$loading({
-          lock: true,
-          text: "Loading",
-          spinner: "el-icon-loading",
-          background: "rgba(0, 0, 0, 0.7)"
-        });
-        this.$http
-          .get("api/Web_BankLoan/Business", {
-            params: {}
-          })
-          .then(
-            function (response) {
-              loading.close();
-              var status = response.data.Status;
-              if (status === 1) {
-                this.list = response.data.Result;
-              } else if (status === -1) {
-                this.$message({
-                  showClose: true,
-                  type: "warning",
-                  message: response.data.Result
-                });
-                setTimeout(() => {
-                  this.$router.push({
-                    path: "/login"
-                  });
-                }, 1500);
-              } else {
-                loading.close();
-                this.$message({
-                  showClose: true,
-                  type: "warning",
-                  message: response.data.Result
-                });
-              }
-            }.bind(this)
-          )
-          // 请求error
-          .catch(
-            function (error) {
-              console.log(error)
-              loading.close();
-              this.$notify.error({
-                title: "错误",
-                message: "错误：请检查网络"
-              });
-            }.bind(this)
-          );
-      },
-      apply(id) {
-        this.$router.push("/Finance/BankLoanApplyfirst/id=" + id);
-      },
     }
   }
 
@@ -116,66 +44,59 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    text-align: center;
-    margin-top: 90px;
-    font-family:MicrosoftYaHei;
-    color:rgba(43,43,43,1);
-  }
-
-  .container {
-    padding-bottom: 80px;
-  }
-
-  .product-title {
-    border-bottom: 3px solid #CEAA70;
-    padding: 0 10px 10px 10px;
-  }
-
-  .el-row {
+  .main {
     margin-top: 60px;
+    background-color: #fff;
+    margin-bottom: 60px;
   }
 
-  .el-card {
-    width: 96%;
-    margin-left: 2%;
-    margin-top: 20px;
-  }
-
-  .background-img {
-    width: 100%;
-  }
-
-  .el-col {
-    cursor: pointer;
-    position: relative;
-  }
-
-  .el-col:hover {
-    transform: translate3d(0, -4px, 0);
-  }
-
-  .card-name {
-    position: absolute;
-    top: 90px;
-    left: 40%;
-    color: #fff;
-  }
-
-  .imgbox {
-    position: absolute;
-    bottom: 50px;
-    left: 10%;
-    width: 80%;
-  }
-
-  .el-col .el-col-6 {
+  h3 {
+    padding-top: 50px;
     text-align: center;
+    margin-top: 50px;
+    font-size: 28px;
   }
 
-  .imgbox img {
-    width: 60%;
-    border-radius: 50%
+  .product-title{
+    margin-top: 30px;
+    border-bottom: 3px solid #EA5B2D  ;
+    padding: 0 10px 10px;
+  }
+
+  .el-button--info{
+    background-color: #ECEBEA;
+    color: #888888;
+    border-color: #ECEBEA;
+  }
+
+  .btnbox{
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .textbox{
+    margin-top: 50px;
+    width: 80%;
+    margin-left: 10%;
+    text-align: center
+  }
+
+  .text-head{
+    color: #333333;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: left
+  }
+
+  .text-body{
+    color: #333333;
+    text-indent:2em;
+    text-align: left
+  }
+
+  .tpimg{
+    margin-top: 20px;
+    padding-bottom: 50px;
   }
 
 </style>
