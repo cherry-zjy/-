@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>推广</title>
+</head>
+<style>
+  .imgbox {
+	position: relative;
+	text-align: center
+  }
+
+  .imgbox img {
+	max-width: 100%;
+	width: 300px;
+	height: 400px;
+  }
+
+  #codeimg {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 20px;
+    left: calc(50% - 50px);
+  }
+
+  .sharebox {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .sharebox img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  .sharebox .share {
+    font-weight: 600;
+  }
+
+</style>
+
+<body>
+  <div class="imgbox">
+    <img id="img" />
+	<img id="codeimg" />
+	
+  </div>
+  
+  <div class="sharebox bdsharebuttonbox">
+		<p id="title"></p>
+    <p class="share">分享至</p>
+    <img src="../../../static/img/sharewechat.png" data-cmd="weixin" class="bds_weixin">
+    <img src="../../../static/img/circle_friends.png" class="bds_weixin" data-cmd="weixin">
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdSnsKey": {},
+        "bdText": "111",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16"
+      },
+      "share": {}
+    };
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
+      'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+  </script>
+  <script src="js/jquery.min.js"></script>
+  <script>
+	var index = location.href.split("index=")[1].split("&")[0];
+	// var first = code.split("**")[0]
+	// var second = code.split("**")[1]
+    // $("#codeimg").attr("src", second.split("||")[0])
+    // $("#img").attr("src", first)
+	// $("#title").html(decodeURIComponent(second.split("||")[1]))
+	// document.title = decodeURIComponent(second.split("||")[1])
+	$.ajax({
+		type:"get",
+		url: "http://zyjf.nbzzjr.com/api/Web_UserInfo/GetPosterList",
+		data:{
+			pageIndex: 1,
+            pageSize: 9999
+		},
+		success:function(data){
+			if(data.Status==1){
+				$("#codeimg").attr("src", data.Result.list[index].QrCode)
+				$("#img").attr("src", data.Result.list[index].Image)
+				$("#title").html(data.Result.list[index].Title)
+				document.title = data.Result.list[index].Title
+			}
+		}
+	})
+  </script>
+</body>
+
+</html>
