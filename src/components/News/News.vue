@@ -2,52 +2,42 @@
   <div id="app">
     <div class="container">
       <div class="main">
-        <el-row :gutter="10">
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" class="picture">
-            <div @click="one(0)">
-              <img src="../../../static/img/credit_card.png">
-              <div class="step-text">{{list[0].Title}}</div>
-            </div>
-          </el-col>
-          <el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="jiantou">
-            <img src="../../../static/img/jiantou.png" class="right">
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" class="picture">
-            <div @click="one(1)">
-              <img src="../../../static/img/illegal.png">
-              <div class="step-text">{{list[1].Title}}</div>
-            </div>
-          </el-col>
-          <el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="jiantou">
-            <img src="../../../static/img/jiantou.png" class="right">
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" @click="one(2)" class="picture">
-            <div @click="one(2)">
-              <img src="../../../static/img/merchants_gathering.png">
-              <div class="step-text">{{list[2].Title}}</div>
-            </div>
-          </el-col>
-        </el-row>
-
-        <!-- <div class="step flex" @click="one(0)">
-          <div class="step-main">
-            <img src="../../../static/img/credit_card.png">
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div class="step-text">{{list[0].Title}}</div>
+        <h3>
+          <span class="product-title">新闻资讯</span>
+        </h3>
+        <div class="btnbox">
+          <el-button :type="type==1?'primary':'info'" size="medium" @click="type=1">公司动态</el-button>
+          <el-button :type="type==2?'primary':'info'" size="medium" @click="type=2">行业动态</el-button>
+          <el-button :type="type==3?'primary':'info'" size="medium" @click="type=3">媒体聚焦</el-button>
         </div>
-        <div class="step flex" @click="one(1)">
-          <div class="step-main">
-            <img src="../../../static/img/illegal.png">
-            <i class="el-icon-arrow-right"></i>
+        <div class="dark">
+          <div class="managerlist" v-for="(item,index) in list" :key="index">
+            <a class="news-item" @click="apply(item.ID)">
+              <img class="news-item-avatar" :src="item.Image">
+              <div class="news-item-right">
+                <p class="news-item-caption">{{item.Tital}}</p>
+                <p class="news-item-brief">{{item.CreateTime}}</p>
+                <p class="news-item-con">{{item.Conteat}}</p>
+                <el-tag class="pctag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
+              </div>
+            </a>
+              <el-tag class="phonetag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
           </div>
-          <div class="step-text">{{list[1].Title}}</div>
         </div>
-        <div class="step" @click="one(2)">
-          <img src="../../../static/img/merchants_gathering.png">
-          <div class="step-text">{{list[2].Title}}</div>
-        </div> -->
+        <el-popover placement="left" width="400" trigger="hover">
+          <p><img src="../../../static/img/phone.png" class="icon"/>电话：0574-87562316</p>
+          <p><img src="../../../static/img/fax.png" class="icon"/>传真：0574-87562316</p>
+          <p><img src="../../../static/img/address.png" class="icon"/>地址：宁波市鄞州区扬帆路 999号研发园B2幢901室 </p>
+          <p><img src="../../../static/img/url.png" class="icon"/>网址：www.kuaizijinrong.com</p>
+          <el-button slot="reference" type="primary" class="tellus"><img src="../../../static/img/contace_us.png" style="width:100%"/>联系我们</el-button>
+        </el-popover>
+        <!-- 分页 -->
+        <div class="block" v-if="pageCount>0">
+          <el-pagination :page-count="pageCount" layout="prev, pager, next" :current-page="currentPage">
+          </el-pagination>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -56,71 +46,110 @@
   export default {
     data() {
       return {
+        type:1,
+        pageIndex: 1,
+        pageCount: 0,
         list: [{
-          Title: ''
-        }, {
-          Title: ''
-        }, {
-          Title: ''
+          ID:1,
+          Image:'../../../static/img/1920x896.jpg',
+          Tital:'日出姚江红似火 栖息鸟儿觅食忙',
+          CreateTime:'2018年8月29日',
+          Conteat:'出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。',
+          tag:['标签一','标签二','标签三']
+        },{
+          ID:1,
+          Image:'../../../static/img/1920x896.jpg',
+          Tital:'日出姚江红似火 栖息鸟儿觅食忙',
+          CreateTime:'2018年8月29日',
+          tag:['标签一','标签二','标签三'],
+          Conteat:'出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
+        },{
+          ID:1,
+          Image:'../../../static/img/1920x896.jpg',
+          Tital:'日出姚江红似火 栖息鸟儿觅食忙',
+          CreateTime:'2018年8月29日',
+          tag:['标签一','标签二','标签三'],
+          Conteat:'出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
+        },{
+          ID:1,
+          Image:'../../../static/img/1920x896.jpg',
+          Tital:'日出姚江红似火 栖息鸟儿觅食忙',
+          CreateTime:'2018年8月29日',
+          tag:['标签一','标签二','标签三'],
+          Conteat:'出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
+        },{
+          ID:1,
+          Image:'../../../static/img/1920x896.jpg',
+          Tital:'日出姚江红似火 栖息鸟儿觅食忙',
+          CreateTime:'2018年8月29日',
+          tag:['标签一','标签二','标签三'],
+          Conteat:'出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
         }]
       }
     },
     mounted: function () {
-      this.getInfo()
+      this.mainurl = mainurl;
+      // this.getInfo()
       document.getElementsByTagName("body")[0].className = "add_bg";
     },
     beforeDestroy: function () {
       document.body.removeAttribute("class", "add_bg");
     },
     computed: {
-
+      currentPage: function () {
+        return this.pageIndex
+      }
     },
     methods: {
-      getInfo() {
-        const loading = this.$loading({
-          lock: true,
-          text: "Loading",
-          spinner: "el-icon-loading",
-          background: "rgba(0, 0, 0, 0.7)"
-        });
-        this.$http
-          .get("api/Web_UserInfo/GetProcess", {
-            params: {
-              type: 0,
-              pageIndex: 1,
-              pageSize: 6,
-            }
-          })
-          .then(
-            function (response) {
-              loading.close();
-              var status = response.data.Status;
-              if (status === 1) {
-                this.list = response.data.Result.data;
-              } else {
-                this.$message({
-                  showClose: true,
-                  type: "warning",
-                  message: response.data.Result
-                });
-              }
-            }.bind(this)
-          )
-          // 请求error
-          .catch(
-            function (error) {
-              console.log(error)
-              loading.close();
-              this.$notify.error({
-                title: "错误",
-                message: "错误：请检查网络"
-              });
-            }.bind(this)
-          );
+      // 分页
+      handleCurrentChange(val) {
+        this.pageIndex = val;
+        // this.getInfo();
       },
-      one(index) {
-        this.$router.push("/Help/Flowone/id=" + index);
+      apply(id) {
+        this.$router.push('/News/NewsDetail/id=' + id);
       },
+      // getInfo() {
+      //   const loading = this.$loading({
+      //     lock: true,
+      //     text: "Loading",
+      //     spinner: "el-icon-loading",
+      //     background: "rgba(0, 0, 0, 0.7)"
+      //   });
+      //   this.$http
+      //     .get("api/Web_NewsList/findList", {
+      //       params: {
+      //         pageIndex: this.pageIndex,
+      //         pageSize: 12
+      //       }
+      //     })
+      //     .then(
+      //       function (response) {
+      //         loading.close();
+      //         var status = response.data.Status;
+      //         if (status === 1) {
+      //           this.list = response.data.Result.data
+      //           this.pageCount = response.data.Result.page
+      //         } else {
+      //           this.$message({
+      //             showClose: true,
+      //             type: "warning",
+      //             message: response.data.Result
+      //           });
+      //         }
+      //       }.bind(this)
+      //     )
+      //     // 请求error
+      //     .catch(
+      //       function (error) {
+      //         loading.close();
+      //         this.$notify.error({
+      //           title: "错误",
+      //           message: "错误：请检查网络"
+      //         });
+      //       }.bind(this)
+      //     );
+      // }
     }
   }
 
@@ -132,53 +161,161 @@
     margin-top: 60px;
     background-color: #fff;
     margin-bottom: 60px;
-    display: flex;
+    float: left;
+    min-width: 100%;
   }
 
-  .step {
-    display: inline-block;
+  h3 {
+    padding-top: 50px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 28px;
+  }
+
+  .product-title {
+    margin-top: 30px;
+    border-bottom: 3px solid #EA5B2D;
+    padding: 0 10px 10px;
+  }
+
+  .btnbox {
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 30px;
+  }
+
+  .el-button--info {
+    background-color: #ECEBEA;
+    color: #888888;
+    border-color: #ECEBEA;
+  }
+
+  .dark {
+    margin: 0 30px;
+    color: #666666;
+    font-family: MicrosoftYaHei;
+    border-top: 1px solid #EEEEEE;
+  }
+
+  .managerlist {
+    float: left;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #EEEEEE;
     cursor: pointer;
   }
 
-  .el-row {
-    width: 100%
+  .news-item {
+    display: flex;
+    color: #2f353f;
   }
 
-  .el-col {
-    text-align: center
+  .news-item-avatar {
+    height: 180px;
+    width: 270px;
+    overflow: hidden;
+    background-color: black;
+    flex-shrink: 0;
   }
 
-  .right {
-    margin-top: 40px;
+  .news-item-time {
+    text-align: left;
+    margin-left: 20px;
+    width: 62px;
+    font-size: 10px;
+    font-weight: 300;
+    padding-top: 0;
+    flex-shrink: 0;
+    margin-top: 0;
   }
 
-  @media (max-width:1200px) {
-    .jiantou {
+  .news-item-right {
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .news-item-caption {
+    font-size: 18px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .news-item-avatar {
+      width: 106px;
+      height: 80px;
+    }
+    .news-item-caption,.news-item-brief,.news-item-time,.news-item-con {
+      margin: 0
+    }
+  }
+
+  .news-item-brief {
+    font-size: 14px;
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: #999999;
+  }
+
+  .news-item-con{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-indent: 2em
+  }
+
+  .block {
+    float: left;
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 80px;
+    width: 100%;
+  }
+
+  .el-tag{
+    margin: 0 20px 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .el-tag{
+      margin: 10px 10px 0 0;
+    }
+    .pctag{
+      display: none
+    }
+    .phonetag{
+      display: -webkit-inline-box
+    }
+  }
+  @media (min-width: 768px) {
+    .pctag{
+      display: -webkit-inline-box
+    }
+    .phonetag{
       display: none
     }
   }
-
-  @media (min-width:768px) {
-    .main {
-      width: 70%;
-      padding: 25% 15%;
-    }
+  .tellus{
+    position: fixed;
+    right: 10%;
+    top: 50%;
+    width: 40px;
+    height: 130px;
+    white-space: inherit;
+    padding: 10px;
+    line-height: 1.5;
   }
 
-  @media (max-width:768px) {
-    .main {
-      width: 100%;
-      padding: 25% 0;
-    }
-  }
-
-  .step-text {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .picture {
-    cursor: pointer;
+  .icon{
+    vertical-align: middle;
   }
 
 </style>

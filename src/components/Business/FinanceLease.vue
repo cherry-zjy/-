@@ -112,8 +112,10 @@
     right: 10%;
     top: 50%;
     width: 40px;
-    height: 120px;
-    white-space: unset;
+    height: 130px;
+    white-space: inherit;
+    padding: 10px;
+    line-height: 1.5;
   }
 
   .icon{

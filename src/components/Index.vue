@@ -113,7 +113,7 @@
         this.$router.push(path);
         if (path == '/Home' || path == '/') {
           this.linum = 'Home'
-        } else if (path == '/Development') {
+        } else if (path.indexOf('Development') > 0) {
           this.linum = 'Development'
         } else if (path.indexOf('News') > 0) {
           this.linum = 'News'
