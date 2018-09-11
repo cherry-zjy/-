@@ -55,14 +55,14 @@
     <div class="foot">
       <div class="container">
       <el-row>
-        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <p class="foot-head">联系我们</p>
           <p>联系电话：0574-87562316</p>
           <p>公司地址：宁波市鄞州区扬帆路999号研发园B2幢901室</p>
           <p class="foot-head">超链接</p>
           <p>连接1 | 连接2 | 连接3 | 连接4 | 连接5</p>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
+        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
           <div class="float-right">
             <img src="../../static/img/circle_friends.png" class="foot-icon">
             <p>关注快子金融微信公众号</p>
