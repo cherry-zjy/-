@@ -64,11 +64,12 @@
         </el-col>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
           <div class="float-right">
-            <img src="../../static/img/1920x896.jpg" class="foot-icon">
+            <img src="../../static/img/kong.png" class="foot-icon">
             <p>关注快子金融微信公众号</p>
           </div>
         </el-col>
       </el-row>
+      <p class="copyright">Copyright<span style="font-family:Arial;">©</span> 2015快子集团 浙ICP备15057000号</p>
       </div>
     </div>
   </div>
@@ -186,7 +187,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 250px;
+    height: 330px;
   }
 
   .foot-head{
@@ -214,6 +215,10 @@
   .float-right{
     text-align: center;
     float: right
+  }
+  .copyright{
+    border-top: 1px solid #444444;
+    padding-top: 30px;
   }
 
 </style>

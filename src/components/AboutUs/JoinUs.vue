@@ -129,9 +129,6 @@
 
   .textbox {
     margin-top: 50px;
-    width: 80%;
-    margin-left: 10%;
-    /* text-align: center */
   }
 
   .text-head {

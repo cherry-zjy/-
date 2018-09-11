@@ -16,7 +16,7 @@
           <el-button type="info" size="medium" @click="$router.push('Culture');">企业文化</el-button>
           <el-button type="primary" size="medium">公司地址</el-button>
         </div>
-        <div class="container map">
+        <div class="map">
           <el-row :gutter="10">
             <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
                <img src="../../../static/img/phone.png" class="address-icon"/>电话：0574-87562316
@@ -25,7 +25,7 @@
                <img src="../../../static/img/address.png" class="address-icon"/>地址：宁波市鄞州区扬帆路999号研发园B2幢901室 
             </el-col>
           </el-row>
-           <BaiDuMap :mapmsg="locationMsg" ref="map"></BaiDuMap>
+           
         </div>
       </div>
       <el-popover placement="left" width="400" trigger="hover">
@@ -36,6 +36,7 @@
         <el-button slot="reference" type="primary" class="tellus"><img src="../../../static/img/contace_us.png" style="width:100%" />联系我们</el-button>
       </el-popover>
     </div>
+    <BaiDuMap :mapmsg="locationMsg" ref="map"></BaiDuMap>
   </div>
 </template>
 
@@ -113,9 +114,6 @@ import BaiDuMap from "../BaiDuMap.vue"; //在页面中引入地图
 
   .textbox {
     margin-top: 50px;
-    width: 80%;
-    margin-left: 10%;
-    /* text-align: center */
   }
 
   .text-head {

@@ -5,17 +5,21 @@
         <img :src="item.Image" class="banner-img">
       </el-carousel-item>
     </el-carousel>
-    <h3>
-      <span class="product-title">企业分布及发展</span>
-    </h3>
-    <div class="textbox">
-      <p class="text-head">经营机构分部</p>
-      <p class="text-body">现目前公司业务已拓展至全部18个省市：浙江省、江西省、上海市、江苏省、广东省、广西省、四川省、重庆市、山西省、陕西省、贵州省、甘肃省、湖南省
-        湖北省、河南省、云南省、吉林省、内蒙古自治区......</p>
-    </div>
-    <div class="textbox">
-      <p class="text-head">公司战略目标</p>
-      <p class="text-body">未来二年内，公司将实现在全国各地市进行全面业务覆盖，建立不少于600家营业网点，将实现年投贷金额规模超50亿，成为国内汽车行业的标杆。</p>
+    <div class="container">
+      <h3>
+        <span class="product-title">企业分布及发展</span>
+      </h3>
+      <div class="main">
+        <div class="textbox">
+          <p class="text-head">经营机构分部</p>
+          <p class="text-body">现目前公司业务已拓展至全部18个省市：浙江省、江西省、上海市、江苏省、广东省、广西省、四川省、重庆市、山西省、陕西省、贵州省、甘肃省、湖南省
+            湖北省、河南省、云南省、吉林省、内蒙古自治区......</p>
+        </div>
+        <div class="textbox">
+          <p class="text-head">公司战略目标</p>
+          <p class="text-body">未来二年内，公司将实现在全国各地市进行全面业务覆盖，建立不少于600家营业网点，将实现年投贷金额规模超50亿，成为国内汽车行业的标杆。</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -88,8 +92,6 @@
 <style scoped>
   .main {
     padding-bottom: 80px;
-    background: url(../../../static/img/bj.png);
-    background-size: 100% 100%;
   }
 
   h3 {
@@ -98,9 +100,13 @@
     margin-top: 50px;
     font-size: 28px;
   }
+  .container{
+    background: url(../../../static/img/bj.png);
+    background-size: 100% 100%;
+  }
 
   @media (max-width: 768px) {
-    h3{
+    h3 {
       padding-top: 0
     }
   }
@@ -118,8 +124,6 @@
 
   .textbox {
     margin-top: 50px;
-    width: 80%;
-    margin-left: 10%;
     text-align: center
   }
 
