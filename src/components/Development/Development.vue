@@ -99,6 +99,12 @@
     font-size: 28px;
   }
 
+  @media (max-width: 768px) {
+    h3{
+      padding-top: 0
+    }
+  }
+
   .product-title {
     margin-top: 30px;
     border-bottom: 3px solid #EA5B2D;
@@ -108,19 +114,6 @@
   .banner-img {
     width: 100%;
     height: 100%;
-  }
-
-  /* banner居中显示，不受屏幕大小失真 */
-
-  .el-carousel__container {
-    position: relative;
-  }
-
-  .el-carousel__item.is-animating {
-    width: 1920px;
-    position: absolute;
-    left: 50%;
-    margin-left: -960px;
   }
 
   .textbox {

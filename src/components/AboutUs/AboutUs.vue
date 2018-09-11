@@ -98,17 +98,10 @@
     font-size: 28px;
   }
 
-  /* banner居中显示，不受屏幕大小失真 */
-
-  .el-carousel__container {
-    position: relative;
-  }
-
-  .el-carousel__item.is-animating {
-    width: 1920px;
-    position: absolute;
-    left: 50%;
-    margin-left: -960px;
+  @media (max-width: 768px) {
+    h3{
+      padding-top: 0
+    }
   }
 
   .banner-img {
@@ -173,6 +166,11 @@
 
   .icon {
     vertical-align: middle;
+  }
+  @media (max-width: 768px) {
+    .btnbox button{
+      margin-top: 10px;
+    }
   }
 
 </style>

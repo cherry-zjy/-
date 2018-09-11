@@ -119,5 +119,10 @@
   .icon{
     vertical-align: middle;
   }
+  @media (max-width: 768px) {
+    .btnbox button{
+      margin-top: 10px;
+    }
+  }
 
 </style>

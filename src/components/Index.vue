@@ -64,7 +64,7 @@
         </el-col>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
           <div class="float-right">
-            <img src="../../static/img/circle_friends.png" class="foot-icon">
+            <img src="../../static/img/1920x896.jpg" class="foot-icon">
             <p>关注快子金融微信公众号</p>
           </div>
         </el-col>
@@ -149,7 +149,6 @@
   }
 
   .menu-btn button {
-
     margin: 13px 0;
     padding: 5px 20px;
   }

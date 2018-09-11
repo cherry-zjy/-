@@ -317,5 +317,10 @@
   .icon{
     vertical-align: middle;
   }
+  @media (max-width: 768px) {
+    h3{
+      padding-top: 0
+    }
+  }
 
 </style>

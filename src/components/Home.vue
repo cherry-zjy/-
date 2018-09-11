@@ -121,19 +121,6 @@
     height: 100%;
   }
 
-  /* banner居中显示，不受屏幕大小失真 */
-
-  .el-carousel__container {
-    position: relative;
-  }
-
-  .el-carousel__item.is-animating {
-    width: 1920px;
-    position: absolute;
-    left: 50%;
-    margin-left: -960px;
-  }
-
   /* 推荐产品 */
 
   h3 {
