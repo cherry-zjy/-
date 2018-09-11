@@ -11,45 +11,46 @@
           <span class="product-title">关于我们</span>
         </h3>
         <div class="btnbox">
-          <el-button type="primary" size="medium">公司简介</el-button>
-          <el-button type="info" size="medium" @click="$router.push('JoinUs');">招贤纳士</el-button>
+          <el-button type="info" size="medium" @click="$router.push('AboutUs');">公司简介</el-button>
+          <el-button type="primary" size="medium">招贤纳士</el-button>
           <el-button type="info" size="medium" @click="$router.push('Culture');">企业文化</el-button>
           <el-button type="info" size="medium" @click="$router.push('Address');">公司地址</el-button>
         </div>
         <div class="textbox">
-          <p class="text-head">公司简介</p>
-          <p class="text-body">快子控股（浙江）集团有限公司，简称“快子金融”，是一家集融资担保、融资租赁、汽车租赁、汽车销售、数据科技、投资管理、资产
-            管理为一体综合性汽车金融服务集团，目前业务已覆盖19个省。 </p>
-          <p class="text-body">快子控股（浙江）集团有限公司紧跟国家金融政策，依托专业的金融服务团队、优质的金融科技技术支持，整合银行、担保、保险、股权
-            投资同时为追求良好的资产质量和健康的商业模式，“快子金融”金融服务平台采取了共享模式，将传统金融服务与互联网分享精神相结合，
-            充分利用合伙制的共享、共赢、同创的特点。</p>
+          <p class="text-head">全国区域经理</p>
+          <p>岗位职责：</p>
+          <p>1、根据分管老总分配的任务指标，积极开拓市场，努力达成考核指标。</p>
+          <p>2、负责贯彻实施公司批准的区域内各项市场政策，在区域内进行渠道的开拓。</p>
+          <p>3、负责区域内汽车按揭、汽车租赁市场的调研，撰写可行性分析报告。</p>
+          <p>4、负责指导、协助下属市场专员开拓渠道。</p>
+          <p>5、负责维护区域内各合作经销商的关系，辅助、指导各营销网点业务上单流程，监控、跟踪各项运营数据。</p>
+          <p>6、负责区域内团队的组建及管理。</p>
+          <p>7、定期向分管老总汇报工作情况及区域市场开拓建议。</p>
+          <div class="twoline">
+            <p>任职要求</p>
+            <p>1、本科及以上学历，市场营销专业，具有三年以上汽车金融行业的工作经验，两年以上团队管理工作经验，有一定的SP渠道资源。</p>
+            <p>2、熟悉当地汽车金融产品，对区域市场的开拓有明确的实施措施。</p>
+            <p>3、能熟练操作办公软件：WORD、EXCEL、PPT等。</p>
+            <p>3、头脑灵活，具有良好语言表达能力和沟通协调能力。</p>
+            <p>4、能吃苦耐劳，适应省内出差。</p>
+          </div>
         </div>
         <div class="textbox">
-          <p class="text-head">控股公司</p>
-          <p>浙江快子担保有限公司</p>
-          <p>快子（浙江）融资租赁有限公司</p>
-          <p>浙江快子汽车服务有限公司</p>
-          <p>浙江快子数据科技有限公司</p>
-          <p>上海金鼎金融信息有限公司</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">战略合作伙伴</p>
-          <p>中国人民财产保险股份有限公司宁波市分公司</p>
-          <p>收吧收吧名车广场</p>
-          <p>太原旧机动车交易中心有限公司</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">合作银行</p>
-          <p>上海银行股份有限公司宁波分行</p>
-          <p>中国银行股份有限公司宁波市科技支行</p>
-          <p>宁波鄞州农村商业银行股份有限公司高新区支行</p>
-          <p>交通银行股份有限公司宁波分行</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">业务区域</p>
-          <p>浙江省、江西省、上海市、江苏省、广东省、广西省、四川省、重庆市、山西省、陕西省、贵州省、甘肃省、湖南省、湖北省、河南省、云南
-            省、吉林省、内蒙古自治区......
+          <p class="text-head">全国SP招募</p>
+          <p class="text-body"> 浙江快子集团是一家专注于银行卡分期的汽车消费金融公司，以下简称快子集团。快子集团位于江南水乡兼海港城市的美丽宁波，快子集
+            团已开通汽车银行卡分期业务，汽车库融业务和汽车租赁分期业务，现面向全国招聘SP。
           </p>
+          <div class="twoline">
+            <p>SP准入标准：</p>
+            <p>1、合法设立的主体，拥有自已的经营团队。</p>
+            <p>2、在行业内和当地口碑良好，具有一定的市场占有量有经济实力。</p>
+            <p>3、热爱汽车金融，并有信心将业务做大，做精，拥有和公司一起长远发展的目标。</p>
+          </div>
+          <div class="twoline">
+            <p>全国区域联系人：</p>
+            <p>市地部总监   董新华   18067308050</p>
+            <p>副总裁  徐帅   18658289866</p>
+          </div>
         </div>
       </div>
       <el-popover placement="left" width="400" trigger="hover">
@@ -153,10 +154,8 @@
     text-align: left
   }
 
-  .tpimg {
-    margin-top: 20px;
-    padding-bottom: 50px;
-    max-width: 100%;
+  .twoline {
+    margin-top: 30px;
   }
 
   .tellus {

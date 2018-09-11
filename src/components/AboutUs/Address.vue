@@ -11,45 +11,21 @@
           <span class="product-title">关于我们</span>
         </h3>
         <div class="btnbox">
-          <el-button type="primary" size="medium">公司简介</el-button>
+          <el-button type="info" size="medium" @click="$router.push('AboutUs');">公司简介</el-button>
           <el-button type="info" size="medium" @click="$router.push('JoinUs');">招贤纳士</el-button>
           <el-button type="info" size="medium" @click="$router.push('Culture');">企业文化</el-button>
-          <el-button type="info" size="medium" @click="$router.push('Address');">公司地址</el-button>
+          <el-button type="primary" size="medium">公司地址</el-button>
         </div>
-        <div class="textbox">
-          <p class="text-head">公司简介</p>
-          <p class="text-body">快子控股（浙江）集团有限公司，简称“快子金融”，是一家集融资担保、融资租赁、汽车租赁、汽车销售、数据科技、投资管理、资产
-            管理为一体综合性汽车金融服务集团，目前业务已覆盖19个省。 </p>
-          <p class="text-body">快子控股（浙江）集团有限公司紧跟国家金融政策，依托专业的金融服务团队、优质的金融科技技术支持，整合银行、担保、保险、股权
-            投资同时为追求良好的资产质量和健康的商业模式，“快子金融”金融服务平台采取了共享模式，将传统金融服务与互联网分享精神相结合，
-            充分利用合伙制的共享、共赢、同创的特点。</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">控股公司</p>
-          <p>浙江快子担保有限公司</p>
-          <p>快子（浙江）融资租赁有限公司</p>
-          <p>浙江快子汽车服务有限公司</p>
-          <p>浙江快子数据科技有限公司</p>
-          <p>上海金鼎金融信息有限公司</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">战略合作伙伴</p>
-          <p>中国人民财产保险股份有限公司宁波市分公司</p>
-          <p>收吧收吧名车广场</p>
-          <p>太原旧机动车交易中心有限公司</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">合作银行</p>
-          <p>上海银行股份有限公司宁波分行</p>
-          <p>中国银行股份有限公司宁波市科技支行</p>
-          <p>宁波鄞州农村商业银行股份有限公司高新区支行</p>
-          <p>交通银行股份有限公司宁波分行</p>
-        </div>
-        <div class="textbox">
-          <p class="text-head">业务区域</p>
-          <p>浙江省、江西省、上海市、江苏省、广东省、广西省、四川省、重庆市、山西省、陕西省、贵州省、甘肃省、湖南省、湖北省、河南省、云南
-            省、吉林省、内蒙古自治区......
-          </p>
+        <div class="container map">
+          <el-row :gutter="10">
+            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+               <img src="../../../static/img/phone.png" class="address-icon"/>电话：0574-87562316
+            </el-col>
+            <el-col :xs="24" :sm="12" :md="12" :lg="16" :xl="16">
+               <img src="../../../static/img/address.png" class="address-icon"/>地址：宁波市鄞州区扬帆路999号研发园B2幢901室 
+            </el-col>
+          </el-row>
+           <BaiDuMap :mapmsg="locationMsg" ref="map"></BaiDuMap>
         </div>
       </div>
       <el-popover placement="left" width="400" trigger="hover">
@@ -64,12 +40,21 @@
 </template>
 
 <script>
+import BaiDuMap from "../BaiDuMap.vue"; //在页面中引入地图
   export default {
+    components: {
+      BaiDuMap
+    },
     data() {
       return {
         bannerlist: [{
           Image: '../../../static/img/banner.png'
         }],
+        locationMsg: {
+          keyword: "",
+          lnglat: "",
+          address: "研发园"
+        }
       }
     },
     mounted: function () {
@@ -173,6 +158,12 @@
 
   .icon {
     vertical-align: middle;
+  }
+  .address-icon{
+    vertical-align: middle
+  }
+  .map{
+    margin-top: 50px;
   }
 
 </style>
