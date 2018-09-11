@@ -1,53 +1,23 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="main">
-        <el-row :gutter="10">
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" class="picture">
-            <div @click="one(0)">
-              <img src="../../../static/img/credit_card.png">
-              <div class="step-text">{{list[0].Title}}</div>
-            </div>
-          </el-col>
-          <el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="jiantou">
-            <img src="../../../static/img/jiantou.png" class="right">
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" class="picture">
-            <div @click="one(1)">
-              <img src="../../../static/img/illegal.png">
-              <div class="step-text">{{list[1].Title}}</div>
-            </div>
-          </el-col>
-          <el-col :xs="3" :sm="3" :md="3" :lg="3" :xl="3" class="jiantou">
-            <img src="../../../static/img/jiantou.png" class="right">
-          </el-col>
-          <el-col :xs="24" :sm="8" :md="8" :lg="6" :xl="6" @click="one(2)" class="picture">
-            <div @click="one(2)">
-              <img src="../../../static/img/merchants_gathering.png">
-              <div class="step-text">{{list[2].Title}}</div>
-            </div>
-          </el-col>
-        </el-row>
-
-        <!-- <div class="step flex" @click="one(0)">
-          <div class="step-main">
-            <img src="../../../static/img/credit_card.png">
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div class="step-text">{{list[0].Title}}</div>
-        </div>
-        <div class="step flex" @click="one(1)">
-          <div class="step-main">
-            <img src="../../../static/img/illegal.png">
-            <i class="el-icon-arrow-right"></i>
-          </div>
-          <div class="step-text">{{list[1].Title}}</div>
-        </div>
-        <div class="step" @click="one(2)">
-          <img src="../../../static/img/merchants_gathering.png">
-          <div class="step-text">{{list[2].Title}}</div>
-        </div> -->
-      </div>
+    <el-carousel arrow="always">
+      <el-carousel-item v-for="item in bannerlist" :key="item.Image">
+        <img :src="item.Image" class="banner-img">
+      </el-carousel-item>
+    </el-carousel>
+    <h3>
+      <span class="product-title">企业分布及发展</span>
+    </h3>
+    <div class="main">
+    <div class="textbox">
+      <p class="text-head">经营机构分部</p>
+      <p class="text-body">现目前公司业务已拓展至全部18个省市：浙江省、江西省、上海市、江苏省、广东省、广西省、四川省、重庆市、山西省、陕西省、贵州省、甘肃省、湖南省
+        湖北省、河南省、云南省、吉林省、内蒙古自治区......</p>
+    </div>
+    <div class="textbox">
+      <p class="text-head">公司战略目标</p>
+      <p class="text-body">未来二年内，公司将实现在全国各地市进行全面业务覆盖，建立不少于600家营业网点，将实现年投贷金额规模超50亿，成为国内汽车行业的标杆。</p>
+    </div>
     </div>
   </div>
 </template>
@@ -56,22 +26,15 @@
   export default {
     data() {
       return {
-        list: [{
-          Title: ''
-        }, {
-          Title: ''
-        }, {
-          Title: ''
-        }]
+        bannerlist: [{
+          Image: '../../../static/img/banner.png'
+        }],
       }
     },
     mounted: function () {
-      this.getInfo()
-      document.getElementsByTagName("body")[0].className = "add_bg";
+      // this.getInfo()
     },
-    beforeDestroy: function () {
-      document.body.removeAttribute("class", "add_bg");
-    },
+    beforeDestroy: function () {},
     computed: {
 
     },
@@ -118,9 +81,6 @@
             }.bind(this)
           );
       },
-      one(index) {
-        this.$router.push("/Help/Flowone/id=" + index);
-      },
     }
   }
 
@@ -129,56 +89,60 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .main {
-    margin-top: 60px;
-    background-color: #fff;
-    margin-bottom: 60px;
-    display: flex;
+    padding-bottom: 80px;
+    background: url(../../../static/img/bj.png);
+    background-size: 100% 100%;
   }
 
-  .step {
-    display: inline-block;
-    cursor: pointer;
+  h3 {
+    padding-top: 50px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 28px;
   }
 
-  .el-row {
-    width: 100%
+  .product-title {
+    margin-top: 30px;
+    border-bottom: 3px solid #EA5B2D;
+    padding: 0 10px 10px;
   }
 
-  .el-col {
+  .banner-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* banner居中显示，不受屏幕大小失真 */
+
+  .el-carousel__container {
+    position: relative;
+  }
+
+  .el-carousel__item.is-animating {
+    width: 1920px;
+    position: absolute;
+    left: 50%;
+    margin-left: -960px;
+  }
+
+  .textbox {
+    margin-top: 50px;
+    width: 80%;
+    margin-left: 10%;
     text-align: center
   }
 
-  .right {
-    margin-top: 40px;
+  .text-head {
+    color: #333333;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: left
   }
 
-  @media (max-width:1200px) {
-    .jiantou {
-      display: none
-    }
-  }
-
-  @media (min-width:768px) {
-    .main {
-      width: 70%;
-      padding: 25% 15%;
-    }
-  }
-
-  @media (max-width:768px) {
-    .main {
-      width: 100%;
-      padding: 25% 0;
-    }
-  }
-
-  .step-text {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .picture {
-    cursor: pointer;
+  .text-body {
+    color: #333333;
+    text-indent: 2em;
+    text-align: left
   }
 
 </style>
