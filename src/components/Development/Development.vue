@@ -21,11 +21,16 @@
         </div>
       </div>
     </div>
+    <Call></Call>
   </div>
 </template>
 
 <script>
+  import Call from "../CallUs";
   export default {
+    components: {
+      Call
+    },
     data() {
       return {
         bannerlist: [{
