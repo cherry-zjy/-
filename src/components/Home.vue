@@ -12,17 +12,17 @@
         </h3>
         <div class="container">
           <el-row :gutter="10">
-            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="scrollimation scale-in d1">
               <div class="box-card" shadow="hover">
                 <img src="../../static/img/mortgage_loans.png"/>
               </div>
             </el-col>
-            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="scrollimation scale-in d1">
               <div class="box-card" shadow="hover">
                 <img src="../../static/img/financing_loan.png"/>
               </div>
             </el-col>
-            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+            <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" class="scrollimation scale-in d1">
               <div class="box-card" shadow="hover">
                 <img src="../../static/img/financing_lease.png"/>
               </div>
@@ -39,16 +39,16 @@
           </h3>
           <div class="container">
             <el-row :gutter="10">
-              <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="cooperation">
+              <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="cooperation scrollimation fade-right">
                 <p>&bull;&nbsp;上海银行股份有限公司宁波分行</p>
                 <p>&bull;&nbsp;中国银行股份有限公司宁波市科技支行</p>
                 <p>&bull;&nbsp;宁波鄞州农村商业银行股份有限公司高新区支行</p>
                 <p>&bull;&nbsp;交通银行股份有限公司宁波分行</p>
               </el-col>
-              <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="cooperation">
+              <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="cooperation scrollimation fade-left">
                 <p>&bull;&nbsp;中国人民财产保险股份有限公司杭州市分公司</p>
                 <p>&bull;&nbsp;收吧收吧名车广场</p>
-                <p>&bull;&nbsp;太原旧机动车交易中心有限公司</p>                
+                <p>&bull;&nbsp;太原旧机动车交易中心有限公司</p>
               </el-col>
             </el-row>
           </div>
@@ -73,6 +73,10 @@
     },
     mounted() {
       this.mainurl = mainurl;
+      this.waypoint()
+    },
+    updated() {
+      
     },
     methods: {
       getInfo() {
@@ -106,6 +110,15 @@
               });
             }.bind(this)
           );
+      },
+      waypoint() {
+        console.log($('.scrollimation'))
+        $('.scrollimation').waypoint(function () {
+          $(this).addClass('in');
+          console.log($(this))
+        }, {
+          offset: '90%'
+        });
       },
     }
   }
