@@ -7,14 +7,13 @@
         </h3>
         <div class="btnbox">
           <el-button type="info" size="medium" @click="$router.push('MortgageLoan');">按揭贷款</el-button>
-          <el-button type="info" size="medium" @click="$router.push('FinancingLoan');">融资金贷款</el-button>
+          <el-button type="info" size="medium" @click="$router.push('FinancingLoan');">库融资金贷款</el-button>
           <el-button type="primary" size="medium">融资租赁</el-button>
         </div>
         <div class="textbox">
-          <p class="text-head">新车二手车按揭贷款</p>
-          <p class="text-body">购买人在购买新车、二手车时，通过其在银行申办的用于汽车按揭分期付款的专项贷款，以所购的车辆作为抵
-押性物，向银行申请贷款。贷款发放后，购车人按月分期还款的方式偿还透支资金并支付分期手续费。</p>
-          <img src="../../../static/img/tp.png" class="tpimg"/>
+          <p class="text-head">融资租赁</p>
+          <p class="text-body">车辆承租人在租赁车辆时，如有一次性全额支付租赁期限内租金的需求，可向银行申请信用卡分期付款，经银行审核同意后，核定给持卡人消费信用额度，并根据持卡人申请，将资金划转让至车辆出租方账户，持卡人每月按照约定金额进行偿还。</p>
+          <img src="../../../static/img/tp.png" class="tpimg" />
         </div>
       </div>
       <Call></Call>
@@ -29,8 +28,7 @@
       Call
     },
     data() {
-      return {
-      }
+      return {}
     },
     mounted: function () {
       document.getElementsByTagName("body")[0].className = "add_bg";
@@ -41,8 +39,7 @@
     computed: {
 
     },
-    methods: {
-    }
+    methods: {}
   }
 
 </script>
@@ -62,40 +59,40 @@
     font-size: 28px;
   }
 
-  .product-title{
+  .product-title {
     margin-top: 30px;
-    border-bottom: 3px solid #EA5B2D  ;
+    border-bottom: 3px solid #EA5B2D;
     padding: 0 10px 10px;
   }
 
-  .el-button--info{
+  .el-button--info {
     background-color: #ECEBEA;
     color: #888888;
     border-color: #ECEBEA;
   }
 
-  .btnbox{
+  .btnbox {
     text-align: center;
     margin-top: 50px;
   }
 
-  .textbox{
+  .textbox {
     margin-top: 50px;
     width: 80%;
     margin-left: 10%;
     text-align: center
   }
 
-  .text-head{
+  .text-head {
     color: #333333;
     font-size: 22px;
     font-weight: 600;
     text-align: left
   }
 
-  .text-body{
+  .text-body {
     color: #333333;
-    text-indent:2em;
+    text-indent: 2em;
     text-align: left
   }
 
@@ -105,7 +102,7 @@
     max-width: 100%;
   }
 
-  .tellus{
+  .tellus {
     position: fixed;
     right: 10%;
     top: 50%;
@@ -116,11 +113,12 @@
     line-height: 1.5;
   }
 
-  .icon{
+  .icon {
     vertical-align: middle;
   }
+
   @media (max-width: 768px) {
-    .btnbox button{
+    .btnbox button {
       margin-top: 10px;
     }
   }

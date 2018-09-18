@@ -46,7 +46,7 @@
       return {
         type:1,
         pageIndex: 1,
-        pageCount: 0,
+        pageCount: 1,
         list: [{
           ID:1,
           Image:'../../../static/img/1920x896.jpg',
