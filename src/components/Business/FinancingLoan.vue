@@ -13,7 +13,7 @@
         <div class="textbox">
           <p class="text-head">新车、二手车库融资金贷款</p>
           <p class="text-body">随着新汽车金融机构不断发展，并作为资本市场上最具有效率和活力的重要一环，直接性的为企业提供多样化的融资服务。汽车经销商、代理商、汽贸公司因经营周转需要，通过期在银行申办短期资金借款，车商以库存车辆作为质押物，借款人按月付息，到期还本并支付手续费。</p>
-          <img src="../../../static/img/tp.png" class="tpimg"/>
+          <!-- <img src="../../../static/img/tp.png" class="tpimg"/> -->
         </div>
       </div>
       <Call></Call>
@@ -81,6 +81,7 @@
   .textbox{
     margin-top: 50px;
     width: 80%;
+    padding-bottom: 50px;
     margin-left: 10%;
     text-align: center
   }

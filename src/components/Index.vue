@@ -19,6 +19,9 @@
               <li :class="{active:linum=='Home'}">
                 <a @click="navto('/')">首页 </a>
               </li>
+              <li :class="{active:linum=='JoinUs'}">
+                <a @click="navto('/JoinUs/JoinUs')">公司简介</a>
+              </li>
               <li class="dropdown" :class="{active:linum=='Business'}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">业务产品
                   <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
@@ -45,6 +48,7 @@
               <li :class="{active:linum=='AboutUs'}">
                 <a @click="navto('/AboutUs/AboutUs')">关于我们</a>
               </li>
+              
             </ul>
           </div>
         </div>
@@ -98,6 +102,8 @@
         this.linum = 'News'
       } else if (path.indexOf('Development') > 0) {
         this.linum = 'Development'
+      } else if (path.indexOf('JoinUs') > 0) {
+        this.linum = 'JoinUs'
       } else {
         this.linum = 'Home'
       }
@@ -120,6 +126,8 @@
           this.linum = 'News'
         } else if (path.indexOf('AboutUs') > 0) {
           this.linum = 'AboutUs'
+        } else if (path.indexOf('JoinUs') > 0) {
+          this.linum = 'JoinUs'
         }else if (path.indexOf('Business') > 0) {
           this.linum = 'Business'
         }

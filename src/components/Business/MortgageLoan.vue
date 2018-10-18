@@ -13,7 +13,7 @@
         <div class="textbox">
           <p class="text-head">新车、二手车按揭贷款</p>
           <p class="text-body">购买人在购买新车、二手车时，通过其在银行申办的用于汽车按揭分期付款的专项贷款，以所购的车辆作为抵押性物，向银行申请贷款。贷款发放后，购车人按月分期还款的方式偿还透支资金并支付分期手续费。</p>
-          <img src="../../../static/img/tp.png" class="tpimg" />
+          <!-- <img src="../../../static/img/tp.png" class="tpimg" /> -->
         </div>
       </div>
       <Call></Call>
@@ -79,6 +79,7 @@
   .textbox {
     margin-top: 50px;
     width: 80%;
+    padding-bottom: 50px;
     margin-left: 10%;
     text-align: center
   }

@@ -36,7 +36,7 @@ export default new Router({
         { path: '/News/NewsDetail/:id', component: NewsDetail, name: '新闻详情' },
 
         { path: '/AboutUs/AboutUs', component: AboutUs, name: '关于我们' },
-        { path: '/AboutUs/JoinUs', component: JoinUs, name: '招贤纳士' },
+        { path: '/JoinUs/JoinUs', component: JoinUs, name: '招贤纳士' },
         { path: '/AboutUs/Culture', component: Culture, name: '企业文化' },
         { path: '/AboutUs/Address', component: Address, name: '公司地址' },
       ]

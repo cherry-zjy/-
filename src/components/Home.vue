@@ -46,17 +46,16 @@
           </el-col>
         </el-row>
       </div>
-      
     </div>
     <h3>
-        <span class="product-title">关于我们</span>
-      </h3>
-      <div class="container">
-        <div class="aboutus scrollimation fade-right">
-          <p>快子控股（浙江）集团有限公司，简称“快子金融”，是一家集融资担保、融资租赁、汽车租赁、汽车销售、数据科技、投资管理、资产 管理为一体综合性汽车金融服务集团，目前业务已覆盖19个省。</p>
-          <p>快子控股（浙江）集团有限公司紧跟国家金融政策，依托专业的金融服务团队、优质的金融科技技术支持，整合银行、担保、保险、股权 投资同时为追求良好的资产质量和健康的商业模式，“快子金融”金融服务平台采取了共享模式，将传统金融服务与互联网分享精神相结合， 充分利用合伙制的共享、共赢、同创的特点。</p>
-        </div>
+      <span class="product-title">关于我们</span>
+    </h3>
+    <div class="container">
+      <div class="aboutus scrollimation fade-right">
+        <p>快子控股（浙江）集团有限公司，简称“快子金融”，是一家集融资担保、融资租赁、汽车租赁、汽车销售、数据科技、投资管理、资产管理为一体综合性汽车金融服务集团，目前业务已覆盖19个省。</p>
+        <p>快子控股（浙江）集团有限公司紧跟国家金融政策，依托专业的金融服务团队、优质的金融科技技术支持，整合银行、担保、保险、股权投资同时为追求良好的资产质量和健康的商业模式，“快子金融”金融服务平台采取了共享模式，将传统金融服务与互联网分享精神相结合，充分利用合伙制的共享、共赢、同创的特点。</p>
       </div>
+    </div>
   </div>
 </template>
 
@@ -203,6 +202,7 @@
     background-color: unset;
     color: #fff;
   }
+
   .aboutus {
     font-size: 18px;
     font-family: MicrosoftYaHei;
