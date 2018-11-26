@@ -23,7 +23,8 @@
                 <a @click="navto('/JoinUs/JoinUs')">公司简介</a>
               </li>
               <li class="dropdown" :class="{active:linum=='Business'}">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">业务产品
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">业务产品
                   <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
                 </a>
                 <ul class="dropdown-menu">
@@ -48,7 +49,7 @@
               <li :class="{active:linum=='AboutUs'}">
                 <a @click="navto('/AboutUs/AboutUs')">关于我们</a>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -58,22 +59,22 @@
     <router-view></router-view>
     <div class="foot">
       <div class="container">
-      <el-row>
-        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-          <p class="foot-head">联系我们</p>
-          <p>联系电话：0574-87562316</p>
-          <p>公司地址：宁波市鄞州区扬帆路999号研发园B2幢901室</p>
-          <!-- <p class="foot-head">超链接</p> -->
-          <!-- <p>连接1 | 连接2 | 连接3 | 连接4 | 连接5</p> -->
-        </el-col>
-        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
-          <div class="float-right">
-            <img src="../../static/img/kong.jpg" class="foot-icon">
-            <p>关注快子金融微信公众号</p>
-          </div>
-        </el-col>
-      </el-row>
-      <p class="copyright">Copyright<span style="font-family:Arial;">©</span> 2015快子集团 浙ICP备15057000号</p>
+        <el-row>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+            <p class="foot-head">联系我们</p>
+            <p>联系电话：0574-87562316</p>
+            <p>公司地址：宁波市鄞州区扬帆路999号研发园B2幢901室</p>
+            <!-- <p class="foot-head">超链接</p> -->
+            <!-- <p>连接1 | 连接2 | 连接3 | 连接4 | 连接5</p> -->
+          </el-col>
+          <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" class="right-foot">
+            <div class="float-right">
+              <img src="../../static/img/kong.jpg" class="foot-icon">
+              <p>关注快子金融微信公众号</p>
+            </div>
+          </el-col>
+        </el-row>
+        <p class="copyright">Copyright<span style="font-family:Arial;">©</span> 2015快子集团 浙ICP备15057000号</p>
       </div>
     </div>
   </div>
@@ -128,7 +129,7 @@
           this.linum = 'AboutUs'
         } else if (path.indexOf('JoinUs') > 0) {
           this.linum = 'JoinUs'
-        }else if (path.indexOf('Business') > 0) {
+        } else if (path.indexOf('Business') > 0) {
           this.linum = 'Business'
         }
       },
@@ -179,12 +180,15 @@
     .menu-btn {
       float: right;
     }
+
     .menu-btn button {
       float: right;
     }
-    .foot .el-row {
-      margin-top: 40px;
-    }
+
+  }
+
+  .foot .el-row {
+    margin-top: 40px;
   }
 
   .foot {
@@ -198,7 +202,7 @@
     height: 330px;
   }
 
-  .foot-head{
+  .foot-head {
     color: #888888;
     margin: 10px 0;
   }
@@ -220,11 +224,13 @@
     width: 150px;
     height: 150px;
   }
-  .float-right{
+
+  .float-right {
     text-align: center;
     float: right
   }
-  .copyright{
+
+  .copyright {
     border-top: 1px solid #444444;
     padding-top: 30px;
   }

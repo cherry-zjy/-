@@ -4,6 +4,10 @@ html {
   height: 100%;
 }
 
+header{
+  width: 100%
+}
+
 body {
   position: relative;
   min-height: 100%;
@@ -11,6 +15,7 @@ body {
   padding-bottom: 330px;
   /* 底部导航条 */
   margin: 0;
+  width: 100%;
   background-color: #fff;
 }
 
@@ -464,7 +469,6 @@ body {
     display: none
   }
 }
-
 @media (max-width:767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
@@ -1336,7 +1340,7 @@ button.list-group-item-danger.active:hover {
   padding: 5px 0;
   margin: 2px 0 0;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
   list-style: none;
   background-color: #fff;
   -webkit-background-clip: padding-box;
