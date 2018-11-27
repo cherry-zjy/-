@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-carousel arrow="always">
+    <el-carousel arrow="always" id="banner">
       <el-carousel-item v-for="item in bannerlist" :key="item.url">
         <img :src="item.Image" class="banner-img">
       </el-carousel-item>
@@ -67,12 +67,25 @@
           Image: '../../static/img/banner.png'
         }],
         list: [],
-        mainurl: ''
+        mainurl: '',
+        clientWight: ''
       }
     },
     mounted() {
       this.mainurl = mainurl;
       this.waypoint()
+      // 动态设置背景图的高度为浏览器可视区域高度
+      // 首先在Virtual DOM渲染数据时，设置下背景图的高度．
+      // 然后监听window的resize事件．在浏览器窗口变化时再设置下背景图高度．
+      const that = this;
+      that.clientWight = `${window.innerWidth}`;
+      console.log(that.clientWight * 0.4)
+      document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      window.onresize = function temp() {
+        that.clientWight = `${window.innerWidth}`;
+        console.log(that.clientWight * 0.4)
+        document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      };
     },
     updated() {
 
@@ -114,7 +127,7 @@
         console.log($('.scrollimation'))
         $('.scrollimation').waypoint(function () {
           $(this).addClass('in');
-          console.log($(this))
+          // console.log($(this))
         }, {
           offset: '90%'
         });
@@ -177,7 +190,7 @@
     background: url(../../static/img/cooperation_company.png);
     color: #eee;
     background-size: 100% 100%;
-    padding: 80px 0;
+    padding: 60px 0;
     margin-top: 50px;
   }
 
@@ -190,9 +203,7 @@
     border-bottom: 3px solid #fff;
   }
 
-  .cooperation p {
-    padding: 15px 0
-  }
+
 
   .dark h3 {
     margin-top: 0;
@@ -218,6 +229,20 @@
     .aboutus {
       padding-bottom: 200px;
       margin-top: 50px;
+    }
+
+    .container .el-row {
+      margin-top: 60px;
+    }
+
+    .cooperation p {
+      padding: 15px 0
+    }
+  }
+
+  @media (max-width:768px) {
+    .container .el-row {
+      margin-top: 0;
     }
   }
 

@@ -6,9 +6,9 @@
           <span class="product-title">新闻资讯</span>
         </h3>
         <div class="btnbox">
-          <el-button type="primary" size="medium" @click="navto('/News/News')">公司动态</el-button>
+          <el-button type="info" size="medium" @click="navto('/News/News')">公司动态</el-button>
           <el-button type="info" size="medium" @click="navto('/News/News2')">行业动态</el-button>
-          <el-button type="info" size="medium" @click="navto('/News/News3')">媒体聚焦</el-button>
+          <el-button type="primary" size="medium" @click="navto('/News/News3')">媒体聚焦</el-button>
         </div>
         <div class="dark">
           <!-- <div class="managerlist" v-for="(item,index) in list" :key="index">

@@ -10,6 +10,8 @@ import FinanceLease from '@/components/Business/FinanceLease'
 import Development from '@/components/Development/Development'
 
 import News from '@/components/News/News'
+import News2 from '@/components/News/News2'
+import News3 from '@/components/News/News3'
 import NewsDetail from '@/components/News/NewsDetail'
 
 import AboutUs from '@/components/AboutUs/AboutUs'
@@ -32,7 +34,9 @@ export default new Router({
         
         { path: '/Development/Development', component: Development, name: '企业发展' },
 
-        { path: '/News/News', component: News, name: '新闻资讯' },
+        { path: '/News/News', component: News, name: '公司动态' },
+        { path: '/News/News2', component: News2, name: '行业动态' },
+        { path: '/News/News3', component: News3, name: '媒体聚焦' },
         { path: '/News/NewsDetail/:id', component: NewsDetail, name: '新闻详情' },
 
         { path: '/AboutUs/AboutUs', component: AboutUs, name: '关于我们' },
