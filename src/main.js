@@ -13,8 +13,8 @@ import qs from 'qs'
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false
-// axios.defaults.baseURL = 'http://192.168.1.106/ZYJF/';
-axios.defaults.baseURL = 'http://zyjf.nbzzjr.com/';
+axios.defaults.baseURL = 'http://192.168.1.125/KuaiZi/';
+// axios.defaults.baseURL = 'http://zyjf.nbzzjr.com/';
 
 // 遍历路由name 设置页面标题
 router.beforeEach((to, from, next) => {

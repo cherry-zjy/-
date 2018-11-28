@@ -12,7 +12,6 @@ body {
   position: relative;
   min-height: 100%;
   box-sizing: border-box;
-  padding-bottom: 360px;
   /* 底部导航条 */
   margin: 0;
   width: 100%;
@@ -43,7 +42,9 @@ body {
     right: auto;
     left: 0
   }
-
+  body {
+    padding-bottom: 360px;
+  }
   
 }
 .el-carousel__container {
@@ -56,6 +57,9 @@ body {
 
   .el-message-box {
     width: 80% !important;
+  }
+  body {
+    padding-bottom: 400px;
   }
 }
 

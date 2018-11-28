@@ -24,21 +24,21 @@
             <el-tag class="phonetag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
           </div> -->
           <!-- <div class="col-xs-12"> -->
-          <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <li>
-              <a class="news-item">  
-                <img class="news-item-avatar" src="../../../static/img/1920x896.jpg">
-
-                <p id="pc-time" class="news-item-time">2018.02.01</p>
+          <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" v-for="(item,index) in list" :key="index">
+            <li class="news-li" @click="apply(item.ID)">
+              <a class="news-item">
+                <img class="news-item-avatar" :src="item.Image">
                 <div class="news-item-right">
-                  <p class="news-item-caption">日出姚江红似火 栖息鸟儿觅食忙</p>
-                  <p class="news-item-brief">出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。</p>
-                  <p id="phone-time" class="news-item-time">2018.02.01</p>
-
+                  <p class="news-item-caption">{{item.Tital}}</p>
+                  <p class="news-item-brief">{{item.Conteat}}</p>
+                  <p id="pc-time" class="news-item-time">{{item.CreateTime}}</p>
+                  <p id="phone-time" class="news-item-time">{{item.CreateTime}}</p>
+                  <el-tag class="pctag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
                 </div>
               </a>
+              <el-tag class="phonetag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
             </li>
-            </el-col>
+          </el-col>
           <!-- </div> -->
         </div>
         <Call></Call>
@@ -247,7 +247,7 @@
 
   @media (max-width: 768px) {
     .el-tag {
-      margin: 10px 10px 0 0;
+      margin: 0px 10px 10px 0;
     }
 
     .pctag {
@@ -291,120 +291,129 @@
   }
 
   .news-item {
-	padding-top: 29px;
-	display: flex;
-	padding-bottom: 29px;
-	border-bottom: 1px solid rgba(100, 100, 100, 0.2);
-	color: #2f353f;
-}
-.news-item-avatar {
+    padding-top: 29px;
+    display: flex;
+    padding-bottom: 29px;
+    color: #2f353f;
+  }
+
+  .news-li{
+    border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+  }
+
+  .news-item-avatar {
     height: 180px;
     width: 270px;
     overflow: hidden;
     background-color: black;
     flex-shrink: 0;
-}
+  }
 
-.news-item-avatar img {
+  .news-item-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+  }
 
-.news-item-time {
-	text-align: left;
-	margin-left: 20px;
-	width: 62px;
-	font-size: 10px;
-	font-weight: 300;
-	padding-top: 0;
-	flex-shrink: 0;
-	margin-top: 0;
-}
-.news-item-right {
-	text-align: left;
-	margin-left: 20px;
-}
-.news-item-caption {
-	font-size: 22px;
-	font-weight: 500;
-	line-height: 33px;
-	margin-bottom: 10px;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 1;
-	overflow: hidden;
-}
-.news-item-brief {
+  .news-item-time {
+    font-size: 13px;
+    font-weight: 300;
+    padding-top: 0;
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  .news-item-right {
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  .news-item-caption {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 33px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+
+  .news-item-brief {
     font-size: 16px;
     font-weight: 300;
     line-height: 33px;
     display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	overflow: hidden;
-}
-/*手机版本*/
-@media (max-width: 768px) {
-	#pc-time {
-		display: none;
-	}
-	.news {
-		margin-top: 202px;
-	}
-	.news-container {
-		padding: 14px 28px 0 28px;
-	}
-	.news-item {
-		padding-top: 14px;
-		padding-bottom: 11px;
-	}
-	.news-item-avatar {
-		width: 150px;
-		height: 100px;
-	}
-	.news-item-right {
-		margin-left: 10px;
-	}
-	.news-item-caption {
-		font-size: 18px;
-		line-height: 20px;
-		height: 20px;
-		color: #646464;
-	}
-	.news-item-brief {
-		font-size: 10px;
-		line-height: 20px;
-		max-height: 40px;
-	}
-	.news-item-time {
-		margin-left: 0;
-		margin-top: 10px;
-	}
-	.news-more {
-		margin-top: 24px;
-		padding-bottom: 33px;
-		color: #646464;	
-		font-size: 10px;	
-		line-height: 10px;
-	}
-	
-}
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
 
-/*pc版本*/
-@media (min-width: 769px) {
-	.news-item-brief {
-		margin-top: 37px;
-	}
-	/*.news-item-right , .news-item-time{
-	    margin-top: 37px;
-	}*/
-	#phone-time {
-		display: none;
-	}
-}
-li{
-  list-style: none;
-}
+  /*手机版本*/
+  @media (max-width: 768px) {
+    #pc-time {
+      display: none;
+    }
+
+    .news {
+      margin-top: 202px;
+    }
+
+    .news-container {
+      padding: 14px 28px 0 28px;
+    }
+
+    .news-item {
+      padding-top: 14px;
+      padding-bottom: 11px;
+    }
+
+    .news-item-avatar {
+      width: 150px;
+      height: 100px;
+    }
+
+    .news-item-right {
+      margin-left: 10px;
+    }
+
+    .news-item-caption {
+      font-size: 18px;
+      line-height: 20px;
+      height: 20px;
+      color: #646464;
+    }
+
+    .news-item-brief {
+      font-size: 10px;
+      line-height: 20px;
+      max-height: 40px;
+    }
+
+    .news-item-time {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+
+    .news-more {
+      margin-top: 24px;
+      padding-bottom: 33px;
+      color: #646464;
+      font-size: 10px;
+      line-height: 10px;
+    }
+
+  }
+
+  /*pc版本*/
+  @media (min-width: 769px) {
+    #phone-time {
+      display: none;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
 
 </style>

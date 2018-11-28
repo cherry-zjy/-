@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <el-carousel arrow="always">
-      <el-carousel-item v-for="item in bannerlist" :key="item.Image">
-        <img :src="item.Image" class="banner-img">
+    <el-carousel arrow="always" id="banner">
+      <el-carousel-item v-for="item in bannerlist" :key="item.url">
+        <img :src="mainurl+item.Image" class="banner-img">
       </el-carousel-item>
     </el-carousel>
     <div class="container">
@@ -39,7 +39,16 @@
       }
     },
     mounted: function () {
-      // this.getInfo()
+      const that = this;
+      this.getInfo()
+      that.clientWight = `${window.innerWidth}`;
+      console.log(that.clientWight * 0.4)
+      document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      window.onresize = function temp() {
+        that.clientWight = `${window.innerWidth}`;
+        console.log(that.clientWight * 0.4)
+        document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      };
     },
     beforeDestroy: function () {},
     computed: {
@@ -47,26 +56,17 @@
     },
     methods: {
       getInfo() {
-        const loading = this.$loading({
-          lock: true,
-          text: "Loading",
-          spinner: "el-icon-loading",
-          background: "rgba(0, 0, 0, 0.7)"
-        });
         this.$http
-          .get("api/Web_UserInfo/GetProcess", {
+          .get("api/Homepage/HomepageList", {
             params: {
-              type: 0,
-              pageIndex: 1,
-              pageSize: 6,
+              type: 1,
             }
           })
           .then(
             function (response) {
-              loading.close();
               var status = response.data.Status;
               if (status === 1) {
-                this.list = response.data.Result.data;
+                this.bannerlist = response.data.Result.list;
               } else {
                 this.$message({
                   showClose: true,
@@ -79,8 +79,6 @@
           // 请求error
           .catch(
             function (error) {
-              console.log(error)
-              loading.close();
               this.$notify.error({
                 title: "错误",
                 message: "错误：请检查网络"

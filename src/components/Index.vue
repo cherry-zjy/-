@@ -10,9 +10,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <!-- <a class="navbar-brand page-scroll" href="/">
+            <a class="navbar-brand page-scroll" href="/" v-if="phone">
               <img src="../../static/img/logo.png" class="img-responsive">
-            </a> -->
+            </a>
           </div>
           <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" v-if="phone">
@@ -42,12 +42,39 @@
               <li :class="{active:linum=='Development'}">
                 <a @click="navto('/Development/Development')">企业发展</a>
               </li>
-              <li :class="{active:linum=='News'}">
-                <a @click="navto('/News/News')">新闻资讯
+              <li class="dropdown" :class="{active:linum=='News'}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">新闻资讯
+                  <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
                 </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a @click="navto('/News/News')">公司动态</a>
+                  </li>
+                  <li>
+                    <a @click="navto('/News/News2')">行业动态</a>
+                  </li>
+                  <li>
+                    <a @click="navto('/News/News3')">媒体聚焦</a>
+                  </li>
+                </ul>
               </li>
-              <li :class="{active:linum=='AboutUs'}">
-                <a @click="navto('/AboutUs/AboutUs')">关于我们</a>
+              <li class="dropdown" :class="{active:linum=='AboutUs'}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">关于我们
+                  <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a @click="navto('/AboutUs/AboutUs')">招贤纳士</a>
+                  </li>
+                  <li>
+                    <a @click="navto('/AboutUs/Culture')">文化企业</a>
+                  </li>
+                  <li>
+                    <a @click="navto('/AboutUs/Address')">公司地址</a>
+                  </li>
+                </ul>
               </li>
             </ul>
             <div class="menu" v-if="!phone">
@@ -72,13 +99,13 @@
                     <span style="margin-left:220px;" @click="navto('/Development/Development')">
                       <p class="navi_title">企业发展</p>
                     </span>
-                    <span @click="navto('/News/News')">
+                    <span>
                       <p class="navi_title">新闻资讯</p>
                       <p><a href="/#/News/News">公司动态</a></p>
                       <p><a href="/#/News/News2">行业动态</a></p>
                       <p><a href="/#/News/News3">媒体聚焦</a></p>
                     </span>
-                    <span @click="navto('/AboutUs/AboutUs')">
+                    <span>
                       <p class="navi_title">关于我们</p>
                       <p><a href="/#/AboutUs/AboutUs">招贤纳士</a></p>
                       <p><a href="/#/AboutUs/Culture">文化企业</a></p>
@@ -100,20 +127,25 @@
             <el-row>
               <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
                 <p class="foot-head">关于我们</p>
-                <p>公司简介</p>
-                <p>企业发展</p>
-                <p>新闻资讯</p>
+                <p class="foot-body" @click="navto('/JoinUs/JoinUs')">公司简介</p>
+                <p class="foot-body" @click="navto('/Development/FinDevelopmentanceLease')">企业发展</p>
               </el-col>
               <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
                 <p class="foot-head">业务产品</p>
-                <p>按揭贷款</p>
-                <p>融资金贷款</p>
-                <p>融资租赁</p>
+                <p class="foot-body" @click="navto('/Business/MortgageLoan')">按揭贷款</p>
+                <p class="foot-body" @click="navto('/Business/FinancingLoan')">融资金贷款</p>
+                <p class="foot-body" @click="navto('/Business/FinanceLease')">融资租赁</p>
               </el-col>
               <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
                 <p class="foot-head">加入我们</p>
-                <p>招贤纳士</p>
-                <p>企业文化</p>
+                <p class="foot-body" @click="navto('/AboutUs/AboutUs')">招贤纳士</p>
+                <p class="foot-body" @click="navto('/AboutUs/Culture')">企业文化</p>
+              </el-col>
+              <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6">
+                <p class="foot-head">新闻资讯</p>
+                <p class="foot-body" @click="navto('/News/News')">公司动态</p>
+                <p class="foot-body" @click="navto('/News/News2')">行业动态</p>
+                <p class="foot-body" @click="navto('/News/News3')">媒体聚焦</p>
               </el-col>
             </el-row>
             <!-- <p class="foot-head">超链接</p> -->
@@ -153,14 +185,14 @@
       } else {
         this.phone = true
       }
-      window.onresize = function temp() {
-        if (window.innerWidth >= 1200) {
-          this.phone = false
-        } else {
-          this.phone = true
-        }
-        console.log(this.phone)
-      };
+      // window.onresize = function temp() {
+      //   if (window.innerWidth >= 1200) {
+      //     this.phone = false
+      //   } else {
+      //     this.phone = true
+      //   }
+      //   console.log(this.phone)
+      // };
       var path = window.location.href;
       if (path.indexOf('AboutUs') > 0) {
         this.linum = 'AboutUs'
@@ -233,6 +265,15 @@
   .nav li a {
     cursor: pointer;
   }
+  .foot {
+    background-color: #333333;
+    color: #BEBEBE;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 
   @media (max-width: 768px) {
     .foot {
@@ -241,6 +282,9 @@
 
     .float-right {
       margin-top: 20px
+    }
+    .foot {
+      height: 400px;
     }
   }
 
@@ -256,18 +300,12 @@
     .foot .el-row {
       margin-top: 20px;
     }
+    .foot {
+      height: 360px;
+    }
   }
 
-  .foot {
-    background-color: #333333;
-    color: #BEBEBE;
-    margin: 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 360px;
-  }
+  
 
   .foot-head {
     color: #888888;
@@ -299,6 +337,9 @@
   .copyright {
     border-top: 1px solid #444444;
     padding-top: 10px;
+  }
+  .foot-body{
+    cursor: pointer;
   }
 
 </style>

@@ -2,7 +2,7 @@
   <div>
     <el-carousel arrow="always" id="banner">
       <el-carousel-item v-for="item in bannerlist" :key="item.url">
-        <img :src="item.Image" class="banner-img">
+        <img :src="mainurl+item.Image" class="banner-img">
       </el-carousel-item>
     </el-carousel>
     <h3>
@@ -74,6 +74,7 @@
     mounted() {
       this.mainurl = mainurl;
       this.waypoint()
+      this.getInfo()
       // 动态设置背景图的高度为浏览器可视区域高度
       // 首先在Virtual DOM渲染数据时，设置下背景图的高度．
       // 然后监听window的resize事件．在浏览器窗口变化时再设置下背景图高度．
@@ -93,10 +94,9 @@
     methods: {
       getInfo() {
         this.$http
-          .get("api/Web_Home/HomeBanner", {
+          .get("api/Homepage/HomepageList", {
             params: {
-              pageIndex: 1,
-              pageSize: 999,
+              type: 0,
             }
           })
           .then(

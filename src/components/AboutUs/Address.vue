@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <el-carousel arrow="always">
-      <el-carousel-item v-for="item in bannerlist" :key="item.Image">
-        <img :src="item.Image" class="banner-img">
+    <el-carousel arrow="always" id="banner">
+      <el-carousel-item v-for="item in bannerlist" :key="item.url">
+        <img :src="mainurl+item.Image" class="banner-img">
       </el-carousel-item>
     </el-carousel>
     <div class="container">
@@ -46,15 +46,58 @@ import Call from "../CallUs";
         bannerlist: [{
           Image: '../../../static/img/banner.png'
         }],
+        mainurl:''
       }
     },
     mounted: function () {
-
+      this.mainurl = mainurl
+      this.getInfo()
+      const that = this;
+      that.clientWight = `${window.innerWidth}`;
+      console.log(that.clientWight * 0.4)
+      document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      window.onresize = function temp() {
+        that.clientWight = `${window.innerWidth}`;
+        console.log(that.clientWight * 0.4)
+        document.getElementById('banner').setAttribute('style', 'height: ' + that.clientWight * 0.4 + 'px');
+      };
     },
     computed: {
 
     },
-    methods: {}
+    methods: {
+      getInfo() {
+        this.$http
+          .get("api/Homepage/HomepageList", {
+            params: {
+              type: 2,
+            }
+          })
+          .then(
+            function (response) {
+              var status = response.data.Status;
+              if (status === 1) {
+                this.bannerlist = response.data.Result.list;
+              } else {
+                this.$message({
+                  showClose: true,
+                  type: "warning",
+                  message: response.data.Result
+                });
+              }
+            }.bind(this)
+          )
+          // 请求error
+          .catch(
+            function (error) {
+              this.$notify.error({
+                title: "错误",
+                message: "错误：请检查网络"
+              });
+            }.bind(this)
+          );
+      },
+    }
   }
 
 </script>
