@@ -25,12 +25,12 @@
           </div> -->
           <!-- <div class="col-xs-12"> -->
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" v-for="(item,index) in list" :key="index">
-            <li class="news-li" @click="apply(item.ID)">
+            <li class="news-li">
               <a class="news-item">
-                <img class="news-item-avatar" :src="item.Image">
+                <img class="news-item-avatar" :src="mainurl+item.Image">
                 <div class="news-item-right">
-                  <p class="news-item-caption">{{item.Tital}}</p>
-                  <p class="news-item-brief">{{item.Conteat}}</p>
+                  <p class="news-item-caption" @click="apply(item.ID)">{{item.Title}}</p>
+                  <p class="news-item-brief" v-html="decodeURIComponent(item.Content)"></p>
                   <p id="pc-time" class="news-item-time">{{item.CreateTime}}</p>
                   <p id="phone-time" class="news-item-time">{{item.CreateTime}}</p>
                   <el-tag class="pctag" type="danger" v-for="(items,index) in item.tag" :key="index">{{items}}</el-tag>
@@ -64,47 +64,13 @@
         type: 1,
         pageIndex: 1,
         pageCount: 1,
-        list: [{
-          ID: 1,
-          Image: '../../../static/img/1920x896.jpg',
-          Tital: '日出姚江红似火 栖息鸟儿觅食忙',
-          CreateTime: '2018年8月29日',
-          Conteat: '出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。',
-          tag: ['标签一', '标签二', '标签三']
-        }, {
-          ID: 1,
-          Image: '../../../static/img/1920x896.jpg',
-          Tital: '日出姚江红似火 栖息鸟儿觅食忙',
-          CreateTime: '2018年8月29日',
-          tag: ['标签一', '标签二', '标签三'],
-          Conteat: '出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
-        }, {
-          ID: 1,
-          Image: '../../../static/img/1920x896.jpg',
-          Tital: '日出姚江红似火 栖息鸟儿觅食忙',
-          CreateTime: '2018年8月29日',
-          tag: ['标签一', '标签二', '标签三'],
-          Conteat: '出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
-        }, {
-          ID: 1,
-          Image: '../../../static/img/1920x896.jpg',
-          Tital: '日出姚江红似火 栖息鸟儿觅食忙',
-          CreateTime: '2018年8月29日',
-          tag: ['标签一', '标签二', '标签三'],
-          Conteat: '出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
-        }, {
-          ID: 1,
-          Image: '../../../static/img/1920x896.jpg',
-          Tital: '日出姚江红似火 栖息鸟儿觅食忙',
-          CreateTime: '2018年8月29日',
-          tag: ['标签一', '标签二', '标签三'],
-          Conteat: '出，指太阳初升出地平线或最初看到的太阳的出现。一般是指太阳由东方的地平线徐徐升起的时间，而确实的定义为日面刚从地平线出现的一刹那，而非整个日面离开地平线。'
-        }]
+        list: [],
+        mainurl:''
       }
     },
     mounted: function () {
       this.mainurl = mainurl;
-      // this.getInfo()
+      this.getInfo()
       document.getElementsByTagName("body")[0].className = "add_bg";
     },
     beforeDestroy: function () {
@@ -119,7 +85,7 @@
       // 分页
       handleCurrentChange(val) {
         this.pageIndex = val;
-        // this.getInfo();
+        this.getInfo();
       },
       navto(path) {
         this.$router.push(path);
@@ -127,47 +93,48 @@
       apply(id) {
         this.$router.push('/News/NewsDetail/id=' + id);
       },
-      // getInfo() {
-      //   const loading = this.$loading({
-      //     lock: true,
-      //     text: "Loading",
-      //     spinner: "el-icon-loading",
-      //     background: "rgba(0, 0, 0, 0.7)"
-      //   });
-      //   this.$http
-      //     .get("api/Web_NewsList/findList", {
-      //       params: {
-      //         pageIndex: this.pageIndex,
-      //         pageSize: 12
-      //       }
-      //     })
-      //     .then(
-      //       function (response) {
-      //         loading.close();
-      //         var status = response.data.Status;
-      //         if (status === 1) {
-      //           this.list = response.data.Result.data
-      //           this.pageCount = response.data.Result.page
-      //         } else {
-      //           this.$message({
-      //             showClose: true,
-      //             type: "warning",
-      //             message: response.data.Result
-      //           });
-      //         }
-      //       }.bind(this)
-      //     )
-      //     // 请求error
-      //     .catch(
-      //       function (error) {
-      //         loading.close();
-      //         this.$notify.error({
-      //           title: "错误",
-      //           message: "错误：请检查网络"
-      //         });
-      //       }.bind(this)
-      //     );
-      // }
+      getInfo() {
+        const loading = this.$loading({
+          lock: true,
+          text: "Loading",
+          spinner: "el-icon-loading",
+          background: "rgba(0, 0, 0, 0.7)"
+        });
+        this.$http
+          .get("api/Homepage/NewsList", {
+            params: {
+              pageIndex: this.pageIndex,
+              pageSize: 12,
+              Type:0
+            }
+          })
+          .then(
+            function (response) {
+              loading.close();
+              var status = response.data.Status;
+              if (status === 1) {
+                this.list = response.data.Result.list
+                this.pageCount = response.data.Result.page
+              } else {
+                this.$message({
+                  showClose: true,
+                  type: "warning",
+                  message: response.data.Result
+                });
+              }
+            }.bind(this)
+          )
+          // 请求error
+          .catch(
+            function (error) {
+              loading.close();
+              this.$notify.error({
+                title: "错误",
+                message: "错误：请检查网络"
+              });
+            }.bind(this)
+          );
+      }
     }
   }
 
@@ -225,6 +192,7 @@
 
   .news-item-caption {
     margin-top: 0;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {

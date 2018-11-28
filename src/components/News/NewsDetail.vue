@@ -2,18 +2,9 @@
   <div id="app">
     <div class="container">
       <div class="main">
-        <h3>日出姚江红似火 栖息鸟儿觅食忙</h3>
-        <div class="time">发布时间：2018-7-19</div>
-        <p>     12月20日,蚂蚁金服宣布全面开启农村金融战略并发布“谷雨计划”:未来三年,将面向国内所有“三农”用户,拉动合作伙伴
-        </p>
-        <p>1、办理信用卡的条件：年满18周岁的成年人。如果没有信用卡，则要求提供本公司的财务证明你的收入状况等相关证明，要是已经拥有一张信用卡，则可以以卡办卡方便了 不少的步骤。必须提供本人的身份证。
-        </p>
-        <p>1、办理信用卡的条件：年满18周岁的成年人。如果没有信用卡，则要求提供本公司的财务证明你的收入状况等相关证明，要是已经拥有一张信用卡，则可以以卡办卡方便了 不少的步骤。必须提供本人的身份证。
-        </p>
-        <p>1、办理信用卡的条件：年满18周岁的成年人。如果没有信用卡，则要求提供本公司的财务证明你的收入状况等相关证明，要是已经拥有一张信用卡，则可以以卡办卡方便了 不少的步骤。必须提供本人的身份证。
-        </p>
-        <p>1、办理信用卡的条件：年满18周岁的成年人。如果没有信用卡，则要求提供本公司的财务证明你的收入状况等相关证明，要是已经拥有一张信用卡，则可以以卡办卡方便了 不少的步骤。必须提供本人的身份证。
-        </p>
+        <h3>{{list.Title}}</h3>
+        <div class="time">发布时间：{{list.CreateTime}}</div>
+        <p v-html="decodeURIComponent(list.Content)"></p>
       </div>
     </div>
     <Call></Call>
@@ -28,10 +19,15 @@
     },
     data() {
       return {
-
+        list:{
+          Title:'',
+          CreateTime:'',
+          Content:''
+        }
       }
     },
     mounted: function () {
+      this.getInfo()
       document.getElementsByTagName("body")[0].className = "add_bg";
     },
     beforeDestroy: function () {
@@ -41,17 +37,45 @@
 
     },
     methods: {
-      submitForm(formName) {
-        // this.$refs[formName].validate((valid) => {
-        //   if (valid) {
-        //     alert('submit!');
-        //   } else {
-        //     console.log('error submit!!');
-        //     return false;
-        //   }
-        // });
-        this.$router.push("/Finance/BankLoanApplysecond/id=" + window.location.href.split("id=")[1]);
-      },
+      getInfo() {
+        const loading = this.$loading({
+          lock: true,
+          text: "Loading",
+          spinner: "el-icon-loading",
+          background: "rgba(0, 0, 0, 0.7)"
+        });
+        this.$http
+          .get("api/Homepage/NewDetail", {
+            params: {
+              ID: window.location.href.split("id=")[1],
+            }
+          })
+          .then(
+            function (response) {
+              loading.close();
+              var status = response.data.Status;
+              if (status === 1) {
+                this.list = response.data.Result
+              } else {
+                this.$message({
+                  showClose: true,
+                  type: "warning",
+                  message: response.data.Result
+                });
+              }
+            }.bind(this)
+          )
+          // 请求error
+          .catch(
+            function (error) {
+              loading.close();
+              this.$notify.error({
+                title: "错误",
+                message: "错误：请检查网络"
+              });
+            }.bind(this)
+          );
+      }
     }
   }
 
