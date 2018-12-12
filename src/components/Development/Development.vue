@@ -19,6 +19,7 @@
           <p class="text-head">公司战略目标</p>
           <p class="text-body">未来二年内，公司将实现在全国各地市进行全面业务覆盖，建立不少于600家营业网点，将实现年投贷金额规模超50亿，成为国内汽车行业的标杆。</p>
         </div>
+        <img src="../../../static/img/地图.png" style="width:100%"/>
       </div>
     </div>
     <Call></Call>
@@ -36,10 +37,12 @@
         bannerlist: [{
           Image: '../../../static/img/banner.png'
         }],
+        mainurl:''
       }
     },
     mounted: function () {
       const that = this;
+      this.mainurl = mainurl
       this.getInfo()
       that.clientWight = `${window.innerWidth}`;
       console.log(that.clientWight * 0.4)

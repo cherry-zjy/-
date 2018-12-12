@@ -1716,10 +1716,12 @@ header .navi_head>div>span>p a {
   text-decoration: none;
   text-align: left
 }
+.el-cascader {
+    width: 100%;
+}
 
 header .navi_head>div>span>p a:hover {
-  color: #777;
-  text-decoration: underline;
+  color: #000;
 }
 
 header .navi_title {

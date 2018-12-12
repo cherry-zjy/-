@@ -1,5 +1,5 @@
-var mainurl = "http://192.168.1.125/KuaiZi/"
-// var mainurl = "http://zyjf.nbzzjr.com/"
+// var mainurl = "http://192.168.1.125/KuaiZi/"
+var mainurl = "http://kuaizi.nbxuanma.com/"
 
 
 function setCookie(name, value) {

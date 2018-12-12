@@ -11,6 +11,7 @@
           <span class="product-title">关于我们</span>
         </h3>
         <div class="btnbox">
+          <el-button type="info" size="medium" @click="$router.push('SP');">SP招募</el-button>
           <el-button type="info" size="medium" @click="$router.push('AboutUs');">招贤纳士</el-button>
           <!-- <el-button type="info" size="medium" @click="$router.push('JoinUs');">招贤纳士</el-button> -->
           <el-button type="info" size="medium" @click="$router.push('Culture');">企业文化</el-button>

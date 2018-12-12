@@ -66,6 +66,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                    <a @click="navto('/AboutUs/SP')">SP招募</a>
+                  </li>
+                  <li>
                     <a @click="navto('/AboutUs/AboutUs')">招贤纳士</a>
                   </li>
                   <li>
@@ -107,6 +110,7 @@
                     </span>
                     <span>
                       <p class="navi_title">关于我们</p>
+                      <p><a href="/#/AboutUs/SP">SP招募</a></p>
                       <p><a href="/#/AboutUs/AboutUs">招贤纳士</a></p>
                       <p><a href="/#/AboutUs/Culture">文化企业</a></p>
                       <p><a href="/#/AboutUs/Address">公司地址</a></p>

@@ -40,7 +40,7 @@
             <p>&bull;&nbsp;交通银行股份有限公司宁波分行</p>
           </el-col>
           <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12" class="cooperation scrollimation fade-right">
-            <p>&bull;&nbsp;中国人民财产保险股份有限公司杭州市分公司</p>
+            <p>&bull;&nbsp;中国人民财产保险股份有限公司宁波市分公司</p>
             <p>&bull;&nbsp;收吧收吧名车广场</p>
             <p>&bull;&nbsp;太原旧机动车交易中心有限公司</p>
           </el-col>

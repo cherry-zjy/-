@@ -15,6 +15,7 @@ import News3 from '@/components/News/News3'
 import NewsDetail from '@/components/News/NewsDetail'
 
 import AboutUs from '@/components/AboutUs/AboutUs'
+import SP from '@/components/AboutUs/SP'
 import JoinUs from '@/components/AboutUs/JoinUs'
 import Culture from '@/components/AboutUs/Culture'
 import Address from '@/components/AboutUs/Address'
@@ -40,6 +41,7 @@ export default new Router({
         { path: '/News/NewsDetail/:id', component: NewsDetail, name: '新闻详情' },
 
         { path: '/AboutUs/AboutUs', component: AboutUs, name: '关于我们' },
+        { path: '/AboutUs/SP', component: SP, name: 'SP招募' },
         { path: '/JoinUs/JoinUs', component: JoinUs, name: '招贤纳士' },
         { path: '/AboutUs/Culture', component: Culture, name: '企业文化' },
         { path: '/AboutUs/Address', component: Address, name: '公司地址' },
